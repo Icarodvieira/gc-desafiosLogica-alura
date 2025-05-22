@@ -5,11 +5,16 @@ let qtdCadeiraInferior = parseInt(document.getElementById('qtd-inferior').innerH
 function comprar(){
     let tipoIng = document.getElementById('tipo-ingresso').value;
     let qtde =  parseInt(document.getElementById('qtd').value);
-    
+
+    if(isNaN(qtd) || qtde < 1){
+        alert("A quantidade deve ser um numero válido maior que 0.");
+        return;
+    }
+
     switch(tipoIng){
         case 'inferior':
             if(qtdCadeiraInferior < qtde || (qtdCadeiraInferior - qtde) < 0){
-                alert("Ingressos insuficientes para essa operação.");
+                alert(`Ingressos insuficientes para o setor ${tipoIng}.`);
                 return;
             }
             qtdCadeiraInferior -= qtde;
@@ -17,7 +22,7 @@ function comprar(){
             break;
         case 'superior':
             if(qtdCadeiraSuperior < qtde || (qtdCadeiraSuperior - qtde) < 0){
-                alert("Ingressos insuficientes para essa operação.");
+                alert(`Ingressos insuficientes para o setor ${tipoIng}.`);
                 return;
             }
             qtdCadeiraSuperior -= qtde;
@@ -25,7 +30,7 @@ function comprar(){
             break;
         case 'pista':
             if(qtdPista < qtde || (qtdPista - qtde) < 0){
-                alert("Ingressos insuficientes para essa operação.");
+                alert(`Ingressos insuficientes para o setor${tipoIng}.`);
                 return;
             }
             qtdPista -= qtde;
