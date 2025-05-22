@@ -68,7 +68,7 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
 }
 
 .container__input {
@@ -148,4 +148,8 @@ button:disabled {
     h1 {
         font-size: 50px;
     }
+}
+
+.aviso {
+    visibility: hidden;
 }
