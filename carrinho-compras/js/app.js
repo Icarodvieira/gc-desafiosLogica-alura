@@ -5,6 +5,11 @@ function adicionar(){
     let nomeProduto = (document.getElementById('produto').value).split('-')[0].trim();
     let valorUnitario = parseInt((document.getElementById('produto').value).split('R$')[1].trim());
     let qtd = parseInt(document.getElementById('quantidade').value);
+
+    if(!nomeProduto || !valorUnitario || !qtd || qtd <= 0 || qtd > 100 ){
+        alert('Por favor, preencha todos os campos corretamente.');
+        return;
+    }
     
     let preco = quantidade.value * valorUnitario;
     
