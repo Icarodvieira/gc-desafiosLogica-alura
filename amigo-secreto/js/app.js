@@ -1,21 +1,33 @@
 let amigos = [];
 
 function adicionar(){
-    nome = document.getElementById('nome-amigo').value;
+    let nome = document.getElementById('nome-amigo').value;
+    let lista = document.getElementById('lista-amigos');
     if(!nome || !isNaN(nome)){ 
         alert("Insira um nome válido.");
+        return;
+    }
+    if (amigos.includes(amigo.value)) {
+        alert('Nome já adicionado!');
+        return;
     }
     amigos.push(nome);
-    document.getElementById('lista-amigos').innerHTML = amigos;
+
+    if (lista.textContent == '') {
+        lista.textContent = nome;
+    } else {
+        lista.textContent = lista.textContent + ', ' + nome;
+    }
     document.getElementById('nome-amigo').value = '';
 }
 
 function sortear(){
+    if (amigos.length < 4) {
+        alert("Adicione pelo menos 4 amigos");
+        return;
+    }
     document.getElementById('lista-sorteio').innerHTML = '';
     let sorteados = [];
-    if(amigos.length % 2 != 0){
-        alert("A quantidade de amigos cadastrados deve ser par para formar as duplas.");
-    }
     
     amigosEmbaralhado = amigos.slice().sort(() => Math.random() - 0.5);
 
